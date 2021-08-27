@@ -15,8 +15,23 @@ module.exports = {
         use: ["babel-loader"],
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.(?:le|c)ss$/,
+        use: ["style-loader", "css-loader", "less-loader"],
+        // use: [
+        //   require.resolve("style-loader"),
+        //   {
+        //     loader: require.resolve("css-loader"),
+        //     options: {
+        //       importLoaders: 1,
+        //     },
+        //   },
+        //   {
+        //     loader: require.resolve("less-loader"),
+        //     options: {
+        //       importLoaders: 1,
+        //     },
+        //   },
+        // ],
       },
     ],
   },
