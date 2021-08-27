@@ -1,4 +1,67 @@
-h1 {
-  color: red;
-  text-align: center;
+@width: 10px;
+@height: @width + 10px;
+@base: #f04615;
+@var: red;
+.header {
+  width: @width;
+  height: @height;
+  color: chartreuse;
 }
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+button {
+  color: red;
+  .bordered();
+}
+ul {
+  color: black;
+  li {
+    font-size: 12px;
+    &:hover {
+      font-size: 20px;
+      color: blue;
+      transition: 0.7s;
+    }
+  }
+}
+.class {
+  width: percentage(@width); // returns `50%`
+  color: saturate(@base, 5%);
+  background-color: spin(lighten(@base, 25%), 8);
+}
+#bundle() {
+  .button {
+    display: block;
+
+    background-color: grey;
+    &:hover {
+      background-color: white;
+    }
+  }
+  .tab {
+    color: grey;
+  }
+}
+.header a {
+  color: orange;
+  #bundle.button(); // can also be written as #bundle > .button
+}
+#colors() {
+  primary: blue;
+  secondary: green;
+}
+
+.button {
+  color: #colors[primary];
+  border: 1px solid #colors[secondary];
+}
+.page {
+  @var: rgb(85, 14, 177);
+  .val {
+    color: @var; // rgb(85, 14, 177);
+  }
+}
+/* One heck of a block
+ * style comment! */
